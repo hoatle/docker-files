@@ -25,3 +25,11 @@ script:
 after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
 - docker push $DOCKER_IMAGE;
+notifications:
+  slack:
+    on_success: always
+    on_failure: always
+    on_pull_requests: false
+    rooms:
+      # account:token#channel
+      - $SLACK_CHANNEL
